@@ -1,53 +1,70 @@
-import 'package:flutter/material.dart';
+// Import necessary Flutter packages
+import 'package:flutter/material.dart'; // Provides core widgets and functionalities for building the UI
 
+/// LegendWidget is a StatelessWidget that displays the legend for the electricity calendar.
 class LegendWidget extends StatelessWidget {
+  // The color for the "on" state.
   final Color onColor;
+  // The color for the "off" state.
   final Color offColor;
+  // The color for the text.
   final Color textColor;
 
+  /// Constructor for the LegendWidget.
+  /// Requires the onColor, offColor, and textColor parameters.
   const LegendWidget({
-    Key? key,
+    super.key,
     required this.onColor,
     required this.offColor,
     required this.textColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
+    // Card is a widget that displays information in a card-like container.
     return Card(
-      elevation: 2,
-      margin: const EdgeInsets.symmetric(horizontal: 16),
+      elevation: 2, // The elevation of the card.
+      margin: const EdgeInsets.symmetric(horizontal: 16), // The margin around the card.
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        // Padding is a widget that adds padding around its child.
+        padding: const EdgeInsets.all(16), // The padding around the child.
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          // Row is a widget that arranges its children in a horizontal line.
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Distribute children evenly.
           children: [
-            _buildLegendItem(onColor, 'Electricity ON', textColor),
-            _buildLegendItem(offColor, 'Electricity OFF', textColor),
+            // The children of the row.
+            _buildLegendItem(onColor, 'Electricity ON', textColor), // Legend item for "Electricity ON".
+            _buildLegendItem(offColor, 'Electricity OFF', textColor), // Legend item for "Electricity OFF".
           ],
         ),
       ),
     );
   }
 
+  /// Builds a legend item.
+  /// Each legend item consists of a colored box and a label.
   Widget _buildLegendItem(Color color, String label, Color textColor) {
     return Row(
       children: [
         Container(
-          width: 24,
-          height: 24,
+          // Container is a widget that can be used to apply styling to its child.
+          width: 24, // The width of the container.
+          height: 24, // The height of the container.
           decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(6),
+            // BoxDecoration is used to apply styling to the container.
+            color: color, // The color of the container.
+            borderRadius: BorderRadius.circular(6), // The border radius of the container.
           ),
         ),
-        const SizedBox(width: 8),
+        const SizedBox(width: 8), // Empty space.
         Text(
-          label,
+          // Text is a widget that displays text.
+          label, // The text to display.
           style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: textColor,
+            // Style for the text.
+            fontSize: 16, // The font size of the text.
+            fontWeight: FontWeight.w500, // The font weight of the text.
+            color: textColor, // The color of the text.
           ),
         ),
       ],
